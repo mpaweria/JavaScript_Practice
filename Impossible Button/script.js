@@ -9,6 +9,7 @@ evilButton.addEventListener('click', ()=> {
 document.addEventListener('mousemove', (e) => {
     const x = e.pageX
     const y = e.pageY
+    console.log(x, y)
     const buttonBox = evilButton.getBoundingClientRect()
 
     const horizontalDistanceFrom = distanceFromCenter(buttonBox.x, x, buttonBox.width)
