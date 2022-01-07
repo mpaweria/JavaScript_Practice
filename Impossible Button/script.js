@@ -27,9 +27,24 @@ document.addEventListener('mousemove', (e) => {
 })
 
 function setButtonPosition(left, top) {
+
+    const windowBox = document.body.getBoundingClientRect()
+    const buttonBox = evilButton.getBoundingClientRect()
+
+    if(distanceFromCenter(left, windowBox.left, buttonBox.width) < 0)
+        left = windowBox.right - buttonBox.width - OFFSET
+
+    if(distanceFromCenter(left, windowBox.right, buttonBox.width) > 0)
+        left = windowBox.left + OFFSET
+
+    if(distanceFromCenter(top, windowBox.top, buttonBox.height) < 0)
+        top = windowBox.bottom - buttonBox.height - OFFSET
+
+    if(distanceFromCenter(top, windowBox.bottom, buttonBox.height) > 0)
+        top = windowBox.top + OFFSET
+
     evilButton.style.left = `${left}px`
     evilButton.style.top = `${top}px`
-    console.log("yay")
 }
 
 function distanceFromCenter(boxPosition, mousePosition, boxSize) {
